@@ -21,3 +21,25 @@ class Alura(Employee):
     def search_questions_without_answer(self):
         print('Searching unanswered questions in Alura')
 
+
+class Junior(Alura):
+    pass
+
+
+class MidLevel(Alura, Caelum):
+    pass
+
+
+rafael = Junior()
+rafael.search_questions_without_answer()
+# NOTES:
+# The order of inheritance is important.
+# The first class will be the first to be searched for the method.
+# MRO - Method Resolution Order takes into account the order of inheritance.
+# First it will search in the class itself, then the first ancestor, in this case Alura,
+# then the second ancestor, Caellum and not in Employee, because Employee is not a good head class.
+# Since Employee is not a good head class, it will change the order of search,
+# and only after looking inside Caelum it will look inside Employee.
+cintia = MidLevel()
+cintia.search_questions_without_answer()
+cintia.search_courses_of_month()
