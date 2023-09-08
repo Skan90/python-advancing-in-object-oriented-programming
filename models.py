@@ -53,8 +53,7 @@ class Playlist():
     def listing(self):
         return self._programs
 
-    @property
-    def size(self):
+    def __len__(self):
         return len(self._programs)
 
 
@@ -82,7 +81,7 @@ movies_and_series = [tbbt, gump, redenmption, got]
 
 weekeend_playlist = Playlist('Weekend', movies_and_series)
 
-print(f'Playlist size: {weekeend_playlist.size}')
+print(f'Playlist size: {len(weekeend_playlist)}')
 
 for program in weekeend_playlist:
     print(program)
