@@ -23,7 +23,7 @@ class Program:
         return f'Name: {self.name} Likes: {self.likes}'
 
 
-class Filme(Program):
+class Movie(Program):
     def __init__(self, name, year, length):
         super().__init__(name, year)
         self.length = length
@@ -32,7 +32,7 @@ class Filme(Program):
         return f'Name: {self.name} - {self.length} min - Likes: {self.likes}'
 
 
-class Serie(Program):
+class Series(Program):
     def __init__(self, name, year, season):
         super().__init__(name, year)
         self.season = season
@@ -41,16 +41,39 @@ class Serie(Program):
         return f'Name: {self.name} - {self.season} season(s) - Likes: {self.likes}'
 
 
-gump = Filme('Forrest Gump', 1994, 142)
-tbbt = Serie('The Big Bang Theory', 2007, 12)
-gump.like_it()
-gump.like_it()
-gump.like_it()
+class Playlist(list):
+    def __init__(self, name, programs):
+        self.name = name
+        super().__init__(programs)
 
+
+gump = Movie('Forrest Gump', 1994, 142)
+redenmption = Movie('The Shawshank Redemption', 1994, 142)
+tbbt = Series('The Big Bang Theory', 2007, 12)
+got = Series('Game of Thrones', 2011, 8)
+
+gump.like_it()
+gump.like_it()
+gump.like_it()
+gump.like_it()
+redenmption.like_it()
+redenmption.like_it()
+redenmption.like_it()
 tbbt.like_it()
 tbbt.like_it()
+tbbt.like_it()
+tbbt.like_it()
+got.like_it()
+got.like_it()
+got.like_it()
 
-listing = [tbbt, gump]
+movies_and_series = [tbbt, gump, redenmption, got]
 
-for program in listing:
+weekeend_playlist = Playlist('Weekend', movies_and_series)
+
+print(f'Playlist size: {len(weekeend_playlist)}')
+
+for program in weekeend_playlist:
     print(program)
+
+print(f'Is Forrest Gump in the playslist? {gump in weekeend_playlist}')
