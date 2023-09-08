@@ -46,9 +46,13 @@ class Playlist():
         self.name = name
         self._programs = programs
 
+    def __getitem__(self, item):
+        return self._programs[item]
+
     @property
     def listing(self):
         return self._programs
+
     @property
     def size(self):
         return len(self._programs)
@@ -80,7 +84,7 @@ weekeend_playlist = Playlist('Weekend', movies_and_series)
 
 print(f'Playlist size: {weekeend_playlist.size}')
 
-for program in weekeend_playlist.listing:
+for program in weekeend_playlist:
     print(program)
 
-print(f'Is Forrest Gump in the playslist? {gump in weekeend_playlist.listing}')
+print(f'Is Forrest Gump in the playslist? {gump in weekeend_playlist}')
