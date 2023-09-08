@@ -27,7 +27,7 @@ class Movie(Program):
     def __init__(self, name, year, length):
         super().__init__(name, year)
         self.length = length
-    
+
     def __str__(self):
         return f'Name: {self.name} - {self.length} min - Likes: {self.likes}'
 
@@ -41,10 +41,17 @@ class Series(Program):
         return f'Name: {self.name} - {self.season} season(s) - Likes: {self.likes}'
 
 
-class Playlist(list):
+class Playlist():
     def __init__(self, name, programs):
         self.name = name
-        super().__init__(programs)
+        self._programs = programs
+
+    @property
+    def listing(self):
+        return self._programs
+    @property
+    def size(self):
+        return len(self._programs)
 
 
 gump = Movie('Forrest Gump', 1994, 142)
@@ -71,9 +78,9 @@ movies_and_series = [tbbt, gump, redenmption, got]
 
 weekeend_playlist = Playlist('Weekend', movies_and_series)
 
-print(f'Playlist size: {len(weekeend_playlist)}')
+print(f'Playlist size: {weekeend_playlist.size}')
 
-for program in weekeend_playlist:
+for program in weekeend_playlist.listing:
     print(program)
 
-print(f'Is Forrest Gump in the playslist? {gump in weekeend_playlist}')
+print(f'Is Forrest Gump in the playslist? {gump in weekeend_playlist.listing}')
