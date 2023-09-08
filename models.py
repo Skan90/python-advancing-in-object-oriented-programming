@@ -1,4 +1,7 @@
-class Program:
+from abc import ABCMeta, abstractmethod
+
+
+class Program(metaclass=ABCMeta):
     def __init__(self, name, year):
         self._name = name.title()
         self.year = year
@@ -19,6 +22,7 @@ class Program:
     def name(self, name):
         self._name = name
 
+    @abstractmethod
     def __str__(self):
         return f'Name: {self.name} Likes: {self.likes}'
 
@@ -46,11 +50,14 @@ class Playlist():
         self.name = name
         self._programs = programs
 
+    def __getitem__(self, item):
+        return self._programs[item]
+
     @property
     def listing(self):
         return self._programs
-    @property
-    def size(self):
+
+    def __len__(self):
         return len(self._programs)
 
 
@@ -78,9 +85,9 @@ movies_and_series = [tbbt, gump, redenmption, got]
 
 weekeend_playlist = Playlist('Weekend', movies_and_series)
 
-print(f'Playlist size: {weekeend_playlist.size}')
+print(f'Playlist size: {len(weekeend_playlist)}')
 
-for program in weekeend_playlist.listing:
+for program in weekeend_playlist:
     print(program)
 
-print(f'Is Forrest Gump in the playslist? {gump in weekeend_playlist.listing}')
+print(f'Is Forrest Gump in the playslist? {gump in weekeend_playlist}')
