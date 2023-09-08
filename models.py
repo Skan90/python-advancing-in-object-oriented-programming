@@ -1,4 +1,7 @@
-class Program:
+from abc import ABCMeta, abstractmethod
+
+
+class Program(metaclass=ABCMeta):
     def __init__(self, name, year):
         self._name = name.title()
         self.year = year
@@ -19,6 +22,7 @@ class Program:
     def name(self, name):
         self._name = name
 
+    @abstractmethod
     def __str__(self):
         return f'Name: {self.name} Likes: {self.likes}'
 
