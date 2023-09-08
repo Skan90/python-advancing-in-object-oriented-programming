@@ -1,4 +1,8 @@
 class Employee:
+
+    def __init__(self, name):
+        self.name = name
+
     def register_hours(self, hours):
         print('Registered hours...')
 
@@ -22,6 +26,11 @@ class Alura(Employee):
         print('Searching unanswered questions in Alura')
 
 
+class Hipster:
+    def __str__(self):
+        return f'Hipster, {self.name}'
+
+
 class Junior(Alura):
     pass
 
@@ -30,7 +39,11 @@ class MidLevel(Alura, Caelum):
     pass
 
 
-rafael = Junior()
+class Senior(Alura, Caelum, Hipster):
+    pass
+
+
+rafael = Junior('Rafael')
 rafael.search_questions_without_answer()
 # NOTES:
 # The order of inheritance is important.
@@ -40,6 +53,9 @@ rafael.search_questions_without_answer()
 # then the second ancestor, Caellum and not in Employee, because Employee is not a good head class.
 # Since Employee is not a good head class, it will change the order of search,
 # and only after looking inside Caelum it will look inside Employee.
-cintia = MidLevel()
+cintia = MidLevel('Cintia')
 cintia.search_questions_without_answer()
 cintia.search_courses_of_month()
+
+marco = Senior('Marco')
+print(marco)
