@@ -1,6 +1,6 @@
 # Python Course: Advancing in Object-Oriented Programming
 
-This repository contains the materials for the "Python: Advancing in Object-Oriented Programming" course offered by Alura.
+This repository contains the materials for the [Python: Advancing in Object-Oriented Programming](https://www.alura.com.br/curso-online-python-3-avancando-orientacao-objetos) course offered by Alura.
 
 ## Course Overview
 
